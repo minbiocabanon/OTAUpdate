@@ -234,9 +234,19 @@ boolean OTAUpdateClass::parseUpdateMD5(String* vxp_name, String* vxp_digest) {
 	update_md5.close();
 	line.trim();
 	
-	int idx = line.indexOf(" ");
-	*vxp_digest = line.substring(0, idx);	
-	*vxp_name = line.substring(idx + 1);
+	//int idx = line.indexOf(" ");
+	//*vxp_digest = line.substring(0, idx);	
+	//*vxp_name = line.substring(idx + 1);
+	
+	// WARNING : buffer line contain HTTP header !
+	// should look for vxp name and md5 from the end of buffer
+	
+	// look for index of last word (md5 name file)
+	int idx = line.lastIndexOf(" ");
+	// get md4 name file from index until end of buffer
+	*vxp_name = line.substring(idx);
+	// get md5 from index and index - 32 bytes (lenght of md5 is constant)
+	*vxp_digest = line.substring(idx - 33, idx - 1);	
 	
 	vxp_name->trim();
 	vxp_digest->trim();
