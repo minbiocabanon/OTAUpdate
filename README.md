@@ -23,7 +23,7 @@ Please follow these steps :
 - Load and build your final sketche. Get precompiled file and rename it update.vxp
 
 - Compute md5 file. On a Linux machine run this command
-	$md5sum update.vxp > update.md5sum
+	$md5sum update.vxp > update.md5
 	
 - Copy update.vxp and update.md5 on server folder (the one you specify IP adress and path in your sketche)
 
