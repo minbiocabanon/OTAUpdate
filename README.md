@@ -20,6 +20,8 @@ Please follow these steps :
 
 - Load and build examples/OTA.ino sketch. Thanks to verbose info, you can copy, paste and rename precompiled file OTA.cpp.vxp into internal flash of the LinkIt ONE : OTA\b_OTA.cpp.vxp 
 
+Then, your linkitone is ready to receive an update. When your program needs to be update over the air, proceed like this : 
+
 - Load and build your final sketche. Get precompiled file and rename it update.vxp
 
 - Compute md5 file. On a Linux machine run this command
@@ -132,3 +134,19 @@ RUNNING THE UPDATED SKETCHE (datetime.ino example)
 	datetimeInfo t.day/t.mon/t.year  t.hour:t.min:t.sec =    1/ 1/2004   5: 3:43
 	rtc = 1072933424
 	datetimeInfo t.day/t.mon/t.year  t.hour:t.min:t.sec =    1/ 1/2004   5: 3:44
+
+## Troubleshooting
+
+### Can't reah host
+	Verify your settings in :
+	
+	<code>OTAUpdate.begin("my.server.ip.adress", "port", "my/dir");</code>
+	
+	or
+	
+	<code>LGPRS.attachGPRS("my", NULL, NULL)</code>
+	
+### md5 file is downloaded but it can't be parsed
+
+	Verify that your linkitone has the /OTA directory in memory. Check throught USB mass storage. If OTA is not present, read the first chapter of this page, you may have miss something...
+	
